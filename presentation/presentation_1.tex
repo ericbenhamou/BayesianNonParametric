@@ -1,0 +1,374 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% BA04 presentation 
+% LaTeX Template
+% Version 1.0 (14/12/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND THEMES
+%----------------------------------------------------------------------------------------
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+% The Beamer class comes with a number of default slide themes
+% which change the colors and layouts of slides. Below this is a list
+% of all the themes, uncomment each in turn to see what they look like.
+
+%\usetheme{default}
+%\usetheme{AnnArbor}
+%\usetheme{Antibes}
+%\usetheme{Bergen}
+%\usetheme{Berkeley}
+%\usetheme{Berlin}
+%\usetheme{Boadilla}
+%\usetheme{CambridgeUS}
+%\usetheme{Copenhagen}
+%\usetheme{Darmstadt}
+%\usetheme{Dresden}
+%\usetheme{Frankfurt}
+%\usetheme{Goettingen}
+%\usetheme{Hannover}
+%\usetheme{Ilmenau}
+%\usetheme{JuanLesPins}
+%\usetheme{Luebeck}
+%\usetheme{Madrid}
+%\usetheme{Malmoe}
+\usetheme{Marburg}
+%\usetheme{Montpellier}
+%\usetheme{PaloAlto}
+%\usetheme{Pittsburgh}
+%\usetheme{Rochester}
+%\usetheme{Singapore}
+%\usetheme{Szeged}
+%\usetheme{Warsaw}
+
+% As well as themes, the Beamer class has a number of color themes
+% for any slide theme. Uncomment each of these in turn to see how it
+% changes the colors of your current slide theme.
+
+%\usecolortheme{albatross}
+%\usecolortheme{beaver}
+%\usecolortheme{beetle}
+%\usecolortheme{crane}
+%\usecolortheme{dolphin}
+%\usecolortheme{dove}
+%\usecolortheme{fly}
+%\usecolortheme{lily}
+%\usecolortheme{orchid}
+%\usecolortheme{rose}
+%\usecolortheme{seagull}
+%\usecolortheme{seahorse}
+%\usecolortheme{whale}
+%\usecolortheme{wolverine}
+
+%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
+%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
+
+\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
+}
+
+\usepackage{graphicx} % Allows including images
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Deep Learning: A Bayesian Perspective]{Deep Learning: A Bayesian Perspective} % The short title appears at the bottom of every slide, the full title is only on the title page
+
+
+\author{
+E. Benhamou\\
+} % Your name
+
+\institute[Université Dauphine] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+{
+Article Reading for Bayesian Nonparametrics\\
+Julyan Arbel's course \\
+M2 MASH \\
+Université Paris Dauphine % Your institution for the title page
+}
+\date{16 March 2018} % Date, can be changed to a custom date
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Summary} % Table of contents slide, comment this block out to remove it
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+%	PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------
+%------------------------------------------------
+\section{Primer on deep learning} 
+\begin{frame}
+\frametitle{Primer on deep learning}
+\begin{itemize}
+\item Deep learning (DL) is a form of machine learning that uses hierarchical abstract layers of latent
+variables to perform pattern matching and prediction.
+\item Deep learning is designed for massive data sets with many high dimensional input variables
+\item Deep learning is theoretically still not very well understood
+\item There are connection with Bayesian Non Parametric that we review here thanks to \cite{Polson 2017}
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\subsection{A few facts} 
+\begin{frame}
+\frametitle{Primer on deep learning}
+\framesubtitle{A few facts}
+\begin{itemize}
+\item Deep learning has existed for more than 50 years (\cite{Rosenblatt 1958} the Perceptron). It was perceived as a complex and not very powerful method for decades.
+\item Deep learning made breakthrough in machine learning only in the last 5 years. MNIST recognition with \cite{Lecun 2013}
+\item Although there is a long list of contributors, 3 researchers have emerged as the main figures
+\cite{Yoshua Lecun Hilton 2015}
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+Deep Learning systems are being deployed in an increasingly large numbers of applications such as
+\begin{itemize}
+\item content filtering, 
+\item medical image analysis, neuroscience
+\item image and face recognition, photo and video collection management, 
+\item self-driving cars, robot perception and control, 
+\item speech recognition, natural language understanding, and language translation.
+\end{itemize}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+Deep learning is designed for massive data sets with many high dimensional input variables
+\begin{itemize}
+\item Google’s translation algorithm \cite{Sutskever et al. 2014} uses $\sim$ 1-2 billion parameters
+and very large dictionaries
+\item Baidu deployed speech recognition systems \cite{Amodei et al. 2016} with a model over 100 million parameters, 11 layers and almost 12 thousand hours of training.
+\end{itemize}
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/deeplearning_evolution.PNG}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\subsection{Framework}
+\begin{frame}
+\frametitle{Primer on deep learning}
+\framesubtitle{Framework}
+There exists many different architectures for deep learning networks.
+\begin{center}
+\includegraphics[width=0.45\textwidth]{images/deepnetworks_architecture_1.PNG}
+\includegraphics[width=0.45\textwidth]{images/deepnetworks_architecture_2.PNG} 
+\end{center}
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/deep_network.PNG}
+\end{frame}
+
+%------------------------------------------------
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/archi_1.PNG} 
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/archi_2.PNG} 
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/archi_3.PNG} 
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/archi_4.PNG} 
+\end{frame}
+%------------------------------------------------
+
+%---------------------------------------------------------------------
+\section{Finding good Bayes Predictors}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Finding good Bayes Predictors}
+\end{frame}
+%------------------------------------------------
+
+\subsection{Shallow learners}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Finding good Bayes Predictors}
+\framesubtitle{Shallow learners}
+\end{frame}
+%------------------------------------------------
+
+\subsection{Methodology}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Finding good Bayes Predictors}
+\framesubtitle{Methodology}
+\end{frame}
+%------------------------------------------------
+
+%---------------------------------------------------------------------
+\section{Algorithmic issues}
+\subsection{Stochastic Gradient Descent}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Algorithmic issues}
+\framesubtitle{Stochastic Gradient Descent}
+\includegraphics[width=0.9\textwidth]{images/optim_1.PNG} \\
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/optim_2.PNG} \\
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/optim_3.PNG} \\
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/optim_4.PNG} \\
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/optim_5.PNG} \\
+\end{frame}
+
+\subsection{Backprop}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/backprop_1.PNG} 
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/backprop_2.PNG} 
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/backprop_3.PNG} 
+\end{frame}
+%------------------------------------------------
+
+\subsection{Dropout}
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Algorithmic issues}
+\framesubtitle{Dropout}
+\includegraphics[width=0.9\textwidth]{images/drop_out_1.PNG} \\
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/drop_out_4.PNG} \\
+\end{frame}
+
+\begin{frame}
+\frametitle{Dropout is efficient (see Leonardo Araujo dos Santos)}
+\includegraphics[width=0.9\textwidth]{images/drop_out_6.PNG} \\
+\end{frame}
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/drop_out_7.PNG} \\
+\end{frame}
+%------------------------------------------------
+
+%---------------------------------------------------------------------
+\section{Application: Airbnb challenge}
+\begin{frame}
+\frametitle{Application: Airbnb challenge}
+\end{frame}
+%------------------------------------------------
+
+\subsection{Challenge presentation}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Application: Airbnb challenge}
+\framesubtitle{Challenge presentation}
+\end{frame}
+%------------------------------------------------
+
+\subsection{Results}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Application: Airbnb challenge}
+\framesubtitle{Results}
+\end{frame}
+%------------------------------------------------
+
+
+
+%------------------------------------------------
+\section{Conclusion}
+\begin{frame}
+\frametitle{Conclusion}
+\end{frame}
+%------------------------------------------------
+
+
+
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{References}
+\footnotesize{
+\begin{thebibliography}{99} 
+% Beamer does not support BibTeX so references must be inserted manually as below
+\bibitem[Polson 2017]{Polson 2017} Polson N., V. Sokolov (2017)
+\newblock Deep Learning: A Bayesian Perspective
+\newblock \emph{arXiv} \href{https://arxiv.org/pdf/1706.00473}{arXiv:1706.00473v4}
+
+\bibitem[Rosenblatt 1958]{Rosenblatt 1958} Rosenblatt, F. (1958)
+\newblock The Perceptron: A Probabilistic Model For Information Storage And Organization In The Brain
+\newblock \emph{Psychological Review. 65 (6): 386–408} \href{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.335.3398&rep=rep1&type=pdf}{citeseerx}
+
+\bibitem[Lecun 2013]{Lecun 2013} LeCun Y., Farabet C., Couprie C., Najman L. (2013)
+\newblock Learning Hierarchical Features for Scene Labeling, 
+\newblock IEEE Transactions on Pattern Analysis and Machine Intelligence, August 2013
+
+\bibitem[Lecun MNIST 2013]{Lecun MNIST 2013} LeCun, Y.; Corinna C.; C. J.C. Burges (2013)
+\newblock MNIST handwritten digit database, 
+\newblock \href{http://yann.lecun.com/exdb/mnist}{Download link}
+
+\end{thebibliography}
+}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{References}
+\footnotesize{
+\begin{thebibliography}{99} 
+\bibitem[Yoshua Lecun Hilton 2015]{Yoshua Lecun Hilton 2015} Bengio, Yoshua, LeCun, Yann, Hinton Geoffrey (2015)
+\newblock Deep Learning
+\newblock \emph{Nature}.521: 436–444 (2015)
+
+\bibitem[Sutskever et al. 2014]{Sutskever et al. 2014} Sutskever I., O. Vinyals, and Quoc V Le (2014)
+\newblock Sequence to sequence learning with neural networks.
+\newblock In Advances in neural information processing systems, pages 3104–3112, 2014. 2
+
+\bibitem[Amodei et al. 2016]{Amodei et al. 2016}Amodei D., Sundaram Ananthanarayanan, Rishita Anubhai, Jingliang Bai, Eric Battenberg, Carl Case, Jared Casper, Bryan Catanzaro, Qiang Cheng, Guoliang Chen, et al (2016)
+\newblock Deep speech 2: End-to-end speech recognition in english and mandarin
+\newblock In International Conference on Machine Learning, pages 173–182, (2016)
+
+\end{thebibliography}
+}
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+\Huge{\centerline{Questions?}}
+\end{frame}
+
+\end{document}
