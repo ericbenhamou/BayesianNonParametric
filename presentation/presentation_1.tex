@@ -16,6 +16,9 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass{beamer}
+\definecolor{links}{HTML}{2A1B81}
+\definecolor{applegreen}{rgb}{0.0, 0.5, 0.0}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
 
 \mode<presentation> {
 
@@ -80,6 +83,7 @@
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
+
 %----------------------------------------------------------------------------------------
 %	TITLE PAGE
 %----------------------------------------------------------------------------------------
@@ -121,11 +125,10 @@ Université Paris Dauphine % Your institution for the title page
 \begin{frame}
 \frametitle{Primer on deep learning}
 \begin{itemize}
-\item Deep learning (DL) is a form of machine learning that uses hierarchical abstract layers of latent
+\item Deep learning (DL) uses hierarchical abstract layers of latent
 variables to perform pattern matching and prediction.
-\item Deep learning is designed for massive data sets with many high dimensional input variables
-\item Deep learning is theoretically still not very well understood
-\item There are connection with Bayesian Non Parametric that we review here thanks to \cite{Polson 2017}
+\item It is designed for massive data sets with many high dimensional input variables
+\item It is theoretically still not very well understood. They are connections with Bayesian Non Parametric that we review here thanks to \cite{Polson 2017}
 \end{itemize}
 \end{frame}
 %------------------------------------------------
@@ -136,23 +139,16 @@ variables to perform pattern matching and prediction.
 \frametitle{Primer on deep learning}
 \framesubtitle{A few facts}
 \begin{itemize}
-\item Deep learning has existed for more than 50 years (\cite{Rosenblatt 1958} the Perceptron). It was perceived as a complex and not very powerful method for decades.
-\item Deep learning made breakthrough in machine learning only in the last 5 years. MNIST recognition with \cite{Lecun 2013}
-\item Although there is a long list of contributors, 3 researchers have emerged as the main figures
+\item DL has existed for more than 50 years (\cite{Rosenblatt 1958}  Perceptron). It was perceived as complex and not very powerful for decades.
+\item DL made breakthrough only in the last 5 years. MNIST recognition \cite{Lecun 2013}. 3 researchers have emerged as the main figures
 \cite{Yoshua Lecun Hilton 2015}
 \end{itemize}
-\end{frame}
-%------------------------------------------------
-
-%------------------------------------------------
-\begin{frame}
-Deep Learning systems are being deployed in an increasingly large numbers of applications such as
+DL is used in many fields:
 \begin{itemize}
 \item content filtering, 
-\item medical image analysis, neuroscience
-\item image and face recognition, photo and video collection management, 
+\item image and face recognition, medical image analysis, neuroscience
 \item self-driving cars, robot perception and control, 
-\item speech recognition, natural language understanding, and language translation.
+\item speech recognition, natural language understanding and translation.
 \end{itemize}
 \end{frame}
 %------------------------------------------------
@@ -165,8 +161,6 @@ Deep learning is designed for massive data sets with many high dimensional input
 and very large dictionaries
 \item Baidu deployed speech recognition systems \cite{Amodei et al. 2016} with a model over 100 million parameters, 11 layers and almost 12 thousand hours of training.
 \end{itemize}
-\end{frame}
-\begin{frame}
 \includegraphics[width=0.9\textwidth]{images/deeplearning_evolution.PNG}
 \end{frame}
 %------------------------------------------------
@@ -186,42 +180,8 @@ There exists many different architectures for deep learning networks.
 \includegraphics[width=0.9\textwidth]{images/deep_network.PNG}
 \end{frame}
 
-%------------------------------------------------
-\begin{frame}
-\includegraphics[width=0.9\textwidth]{images/archi_1.PNG} 
-\end{frame}
-\begin{frame}
-\includegraphics[width=0.9\textwidth]{images/archi_2.PNG} 
-\end{frame}
-\begin{frame}
-\includegraphics[width=0.9\textwidth]{images/archi_3.PNG} 
-\end{frame}
 \begin{frame}
 \includegraphics[width=0.9\textwidth]{images/archi_4.PNG} 
-\end{frame}
-%------------------------------------------------
-
-%---------------------------------------------------------------------
-\section{Finding good Bayes Predictors}
-%------------------------------------------------
-\begin{frame}
-\frametitle{Finding good Bayes Predictors}
-\end{frame}
-%------------------------------------------------
-
-\subsection{Shallow learners}
-%------------------------------------------------
-\begin{frame}
-\frametitle{Finding good Bayes Predictors}
-\framesubtitle{Shallow learners}
-\end{frame}
-%------------------------------------------------
-
-\subsection{Methodology}
-%------------------------------------------------
-\begin{frame}
-\frametitle{Finding good Bayes Predictors}
-\framesubtitle{Methodology}
 \end{frame}
 %------------------------------------------------
 
@@ -232,20 +192,11 @@ There exists many different architectures for deep learning networks.
 \begin{frame}
 \frametitle{Algorithmic issues}
 \framesubtitle{Stochastic Gradient Descent}
-\includegraphics[width=0.9\textwidth]{images/optim_1.PNG} \\
-\end{frame}
-%------------------------------------------------
-\begin{frame}
 \includegraphics[width=0.9\textwidth]{images/optim_2.PNG} \\
 \end{frame}
 \begin{frame}
-\includegraphics[width=0.9\textwidth]{images/optim_3.PNG} \\
-\end{frame}
-\begin{frame}
+We could think of local minimum problem but reality is the following:
 \includegraphics[width=0.9\textwidth]{images/optim_4.PNG} \\
-\end{frame}
-\begin{frame}
-\includegraphics[width=0.9\textwidth]{images/optim_5.PNG} \\
 \end{frame}
 
 \subsection{Backprop}
@@ -253,55 +204,130 @@ There exists many different architectures for deep learning networks.
 \includegraphics[width=0.9\textwidth]{images/backprop_1.PNG} 
 \end{frame}
 \begin{frame}
-\includegraphics[width=0.9\textwidth]{images/backprop_2.PNG} 
-\end{frame}
-\begin{frame}
 \includegraphics[width=0.9\textwidth]{images/backprop_3.PNG} 
 \end{frame}
 %------------------------------------------------
 
 \subsection{Dropout}
-
 %------------------------------------------------
 \begin{frame}
 \frametitle{Algorithmic issues}
 \framesubtitle{Dropout}
 \includegraphics[width=0.9\textwidth]{images/drop_out_1.PNG} \\
+Dropout is exact for linear classification but we still do not know how to prove it for more complex networks
 \end{frame}
 %------------------------------------------------
 \begin{frame}
-\includegraphics[width=0.9\textwidth]{images/drop_out_4.PNG} \\
-\end{frame}
-
-\begin{frame}
 \frametitle{Dropout is efficient (see Leonardo Araujo dos Santos)}
 \includegraphics[width=0.9\textwidth]{images/drop_out_6.PNG} \\
+It can be shown that dropout training is identical to approximate
+inference in Bayesian modeling  \cite{Gal 2016}
 \end{frame}
 \begin{frame}
+Dropout can be seen as a Bayes ridge regression
+\\
+The problem is 
 \includegraphics[width=0.9\textwidth]{images/drop_out_7.PNG} \\
 \end{frame}
 %------------------------------------------------
 
 %---------------------------------------------------------------------
 \section{Application: Airbnb challenge}
-\begin{frame}
-\frametitle{Application: Airbnb challenge}
-\end{frame}
-%------------------------------------------------
-
 \subsection{Challenge presentation}
 %------------------------------------------------
 \begin{frame}
 \frametitle{Application: Airbnb challenge}
 \framesubtitle{Challenge presentation}
+We try to reproduce some results of the article. This concerns the Airbnb Kaggle competition, offered in 2014.
+The full link is here: 
+\href{https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings}{Airbnb kaggle}
+\\
+We present here the main points:
+\begin{itemize}
+\item goal: predict in which country a new user will make his or her first booking
+\item database resctricted to 10 countries + other + NDF
+\item data consists of 2 tables: attributes of each of the users, data about sessions 
+\item  represent 213,451 users and 1,056,7737 individual sessions
+\end{itemize}
 \end{frame}
 %------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+Full code is available in 
+ \href{https://github.com/ericbenhamou/BayesianNonParametric}{github}
+\\
+Using barplot, we can give an intuition about the data
+\includegraphics[width=0.9\textwidth]{images/data_challenge_1.PNG} 
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+\includegraphics[width=0.9\textwidth]{images/data_challenge_2.PNG} 
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+Building a deep net in R is straightforward with the h2o package
+It works as follows: \\
+\bigskip
+
+{\color{applegreen}  \#\# load library } \\
+{\color{blue} library}(h2o) \\
+h2o.init(nthreads = -1, max\_mem\_size="2G") \\
+{\color{applegreen}  \#\# clean slate (just in case cluster was running) } \\
+h2o.removeAll() \\
+{\color{applegreen}  \#\# create h2o dataframe } \\
+train\_users.hex = as.h2o(train\_users[1:10000,]) 
+
+{\color{applegreen}  \#\# create train and test sets} \\
+splits = h2o.splitFrame( \\
+\hspace{0.5cm}  train\_users.hex,    c({\color{blue} 0.7},{\color{blue} 0.3}), \\
+\hspace{0.5cm}  seed = {\color{blue} 1234})   
+\end{frame}
+%------------------------------------------------
+
+%------------------------------------------------
+\begin{frame}
+\frametitle{Code: continued...}
+{\color{applegreen}  \#\# assign to variable train and test } \\
+train = h2o.assign (splits[[ {\color{blue} 1}]], "train.hex") \\
+test  = h2o.assign (splits[[{\color{blue}  2}]], "test.hex")     \\
+dl\_model = h2o.deeplearning(  \\
+\hspace{0.5cm}    x = {\color{blue} 1} {\color{blue} 15},  \\
+\hspace{0.5cm}    y = {\color{blue} 16},  \\
+\hspace{0.5cm}    training\_frame = train,  \\
+\hspace{0.5cm}    activation = "RectifierWithDropout", \\
+\hspace{0.5cm}    hidden = c({\color{blue} 50}), \\
+\hspace{0.5cm}    epochs = {\color{blue} 20}, \\
+\hspace{0.5cm}    loss = "CrossEntropy", \\
+\hspace{0.5cm}    adaptive\_rate = FALSE, \\
+\hspace{0.5cm}    rate ={\color{blue} .001}, \\
+\hspace{0.5cm}    input\_dropout\_ratio = {\color{blue} 0.1}, \\
+\hspace{0.5cm}    hidden\_dropout\_ratios = c({\color{blue} .2}) \\
+)
+\end{frame}
+
+\begin{frame}
+\frametitle{Code: continued...}
+{\color{applegreen}  \#\# display summary } \\
+summary(dl\_model ) \\
+{\color{applegreen}  \#\# validation metrics (confusion matrix)} \\
+dl\_model@model\$validation\_metrics     
+{\color{applegreen}  \#\# just accuracy } \\
+h2o.hit\_ratio\_table(dl\_model ,valid = T)[1,2] \\
+\end{frame}
+
 
 \subsection{Results}
 %------------------------------------------------
 \begin{frame}
 \frametitle{Application: Airbnb challenge}
 \framesubtitle{Results}
+We managed to get a hit ratio of 0.8252093 compared to the paper of 0.8351
+\includegraphics[width=0.9\textwidth]{images/result1.PNG} 
 \end{frame}
 %------------------------------------------------
 
@@ -311,9 +337,14 @@ There exists many different architectures for deep learning networks.
 \section{Conclusion}
 \begin{frame}
 \frametitle{Conclusion}
+This paper is quite general and presents the foundation of the usage of Bayesian tools to assist in training deep architecture.
+There are many possible extension to Bayesian for deep network:
+\begin{itemize}
+\item viewing deep learning as a Gaussian Process and doing exact Bayesian inference via posterior
+\item using Monte Carlo Markov Chain
+\end{itemize}
 \end{frame}
 %------------------------------------------------
-
 
 
 
@@ -360,6 +391,11 @@ There exists many different architectures for deep learning networks.
 \bibitem[Amodei et al. 2016]{Amodei et al. 2016}Amodei D., Sundaram Ananthanarayanan, Rishita Anubhai, Jingliang Bai, Eric Battenberg, Carl Case, Jared Casper, Bryan Catanzaro, Qiang Cheng, Guoliang Chen, et al (2016)
 \newblock Deep speech 2: End-to-end speech recognition in english and mandarin
 \newblock In International Conference on Machine Learning, pages 173–182, (2016)
+
+\bibitem[Gal 2016]{Gal 2016} Y Gal, Z Ghahramani (2016) 
+\newblock A Theoretically Grounded Application of Dropout in
+\newblock Recurrent Neural Networks”, NIPS (2016)
+
 
 \end{thebibliography}
 }
