@@ -262,11 +262,6 @@ Using barplot, we can give an intuition about the data
 \end{frame}
 %------------------------------------------------
 
-%------------------------------------------------
-\begin{frame}
-\includegraphics[width=0.9\textwidth]{images/data_challenge_2.PNG} 
-\end{frame}
-%------------------------------------------------
 
 %------------------------------------------------
 \begin{frame}
@@ -293,16 +288,16 @@ splits = h2o.splitFrame( \\
 \begin{frame}
 \frametitle{Code: continued...}
 {\color{applegreen}  \#\# assign to variable train and test } \\
-train = h2o.assign (splits[[ {\color{blue} 1}]], "train.hex") \\
-test  = h2o.assign (splits[[{\color{blue}  2}]], "test.hex")     \\
+train = h2o.assign (splits[[ {\color{blue} 1}]], {\color{red}"train.hex"}) \\
+test  = h2o.assign (splits[[{\color{blue}  2}]], {\color{red}"test.hex"})     \\
 dl\_model = h2o.deeplearning(  \\
 \hspace{0.5cm}    x = {\color{blue} 1} {\color{blue} 15},  \\
 \hspace{0.5cm}    y = {\color{blue} 16},  \\
 \hspace{0.5cm}    training\_frame = train,  \\
-\hspace{0.5cm}    activation = "RectifierWithDropout", \\
+\hspace{0.5cm}    activation = {\color{red}"RectifierWithDropout"}, \\
 \hspace{0.5cm}    hidden = c({\color{blue} 50}), \\
 \hspace{0.5cm}    epochs = {\color{blue} 20}, \\
-\hspace{0.5cm}    loss = "CrossEntropy", \\
+\hspace{0.5cm}    loss = {\color{red}"CrossEntropy"}, \\
 \hspace{0.5cm}    adaptive\_rate = FALSE, \\
 \hspace{0.5cm}    rate ={\color{blue} .001}, \\
 \hspace{0.5cm}    input\_dropout\_ratio = {\color{blue} 0.1}, \\
@@ -318,8 +313,14 @@ summary(dl\_model ) \\
 dl\_model@model\$validation\_metrics     
 {\color{applegreen}  \#\# just accuracy } \\
 h2o.hit\_ratio\_table(dl\_model ,valid = T)[1,2] \\
+\vspace{1cm}
+To summarize, to do deep learning, here are the packages
+\begin{itemize}
+\item in python, tensorflow + keras, but also pytorch, theano and caffee
+\item specifically, in R, simple packages are nnet, neuralnet, RSNNS
+\item more advanced are deepnet, darch, h2o
+\end{itemize}
 \end{frame}
-
 
 \subsection{Results}
 %------------------------------------------------
@@ -347,6 +348,11 @@ There are many possible extension to Bayesian for deep network:
 %------------------------------------------------
 
 
+
+%------------------------------------------------
+\begin{frame}
+\Huge{\centerline{Questions?}}
+\end{frame}
 
 %------------------------------------------------
 \begin{frame}
@@ -402,9 +408,5 @@ There are many possible extension to Bayesian for deep network:
 \end{frame}
 %------------------------------------------------
 
-%------------------------------------------------
-\begin{frame}
-\Huge{\centerline{Questions?}}
-\end{frame}
 
 \end{document}
