@@ -1,0 +1,559 @@
+      dest_male dest_female
+NDF       26719       31048
+US        19457       22694
+other      3443        3160
+FR         1335        1962
+IT          699        1091
+GB          682         881
+ES          677         853
+CA          477         455
+DE          416         358
+NL          278         254
+AU          188         207
+PT           69          78
+
+ Connection successful!
+
+R is connected to the H2O cluster: 
+    H2O cluster uptime:         3 minutes 5 seconds 
+    H2O cluster version:        3.16.0.2 
+    H2O cluster version age:    3 months and 15 days !!! 
+    H2O cluster name:           H2O_started_from_R_eric.benhamou_fvm257 
+    H2O cluster total nodes:    1 
+    H2O cluster total memory:   1.72 GB 
+    H2O cluster total cores:    8 
+    H2O cluster allowed cores:  8 
+    H2O cluster healthy:        TRUE 
+    H2O Connection ip:          localhost 
+    H2O Connection port:        54321 
+    H2O Connection proxy:       NA 
+    H2O Internal Security:      FALSE 
+    H2O API Extensions:         Algos, AutoML, Core V3, Core V4 
+    R Version:                  R version 3.4.2 (2017-09-28) 
+
+Warning message:
+In h2o.clusterInfo() : 
+Your H2O cluster version is too old (3 months and 15 days)!
+Please download and install the latest version from http://h2o.ai/download/
+
+[1] 0
+  |=========================================================================| 100%
+[1] 7027   16
+[1] 1001   16
+  |=========================================================================| 100%
+Warning message:
+In .h2o.startModelJob(algo, params, h2oRestApiVersion) :
+  Dropping bad and constant columns: [signup_app].
+
+Model Details:
+==============
+H2OMultinomialModel: drf
+Model Key:  rf_country 
+Model Summary: 
+  number_of_trees number_of_internal_trees model_size_in_bytes min_depth max_depth
+1              41                      492             1809931         1        20
+  mean_depth min_leaves max_leaves mean_leaves
+1   12.63618          2        372    79.75407
+
+H2OMultinomialMetrics: drf
+** Reported on training data. **
+** Metrics reported on Out-Of-Bag training samples **
+
+Training Set Metrics: 
+=====================
+
+Extract training frame with `h2o.getFrame("train.hex")`
+MSE: (Extract with `h2o.mse`) 0.180677
+RMSE: (Extract with `h2o.rmse`) 0.4250612
+Logloss: (Extract with `h2o.logloss`) 3.736542
+Mean Per-Class Error: 0.8320739
+Confusion Matrix: Extract with `h2o.confusionMatrix(<model>,train = TRUE)`)
+=========================================================================
+Confusion Matrix: Row labels: Actual class; Column labels: Predicted class
+       AU CA DE ES FR GB IT  NDF NL PT   US other  Error            Rate
+AU      0  0  0  1  2  0  0    0  0  0   14     0 1.0000 =       17 / 17
+CA      0  1  0  0  0  0  0    0  0  0   92     1 0.9894 =       93 / 94
+DE      0  1  0  0  0  1  0    0  0  0   58     0 1.0000 =       60 / 60
+ES      0  0  0  0  2  1  1    0  0  0  114     0 1.0000 =     118 / 118
+FR      0  1  0  1  5  0  0    0  0  0  298     2 0.9837 =     302 / 307
+GB      0  0  0  0  0  0  0    0  1  0   93     2 1.0000 =       96 / 96
+IT      0  0  0  0  0  0  1    0  0  0  119     0 0.9917 =     119 / 120
+NDF     0  0  0  0  0  0  0 2951  0  0    0     0 0.0000 =     0 / 2,951
+NL      0  0  0  0  0  0  0    0  0  0   40     0 1.0000 =       40 / 40
+PT      0  0  0  0  0  0  0    0  0  0    8     0 1.0000 =         8 / 8
+US      0  5  5  6 22  8  2    0  2  0 2836    28 0.0268 =    78 / 2,914
+other   0  1  0  0  4  0  1    1  0  0  293     2 0.9934 =     300 / 302
+Totals  0  9  5  8 35 10  5 2952  3  0 3965    35 0.1752 = 1,231 / 7,027
+
+Hit Ratio Table: Extract with `h2o.hit_ratio_table(<model>,train = TRUE)`
+=======================================================================
+Top-10 Hit Ratios: 
+    k hit_ratio
+1   1  0.824819
+2   2  0.865946
+3   3  0.885869
+4   4  0.895261
+5   5  0.900242
+6   6  0.901380
+7   7  0.902234
+8   8  0.902234
+9   9  0.902234
+10 10  0.902234
+
+
+H2OMultinomialMetrics: drf
+** Reported on validation data. **
+
+Validation Set Metrics: 
+=====================
+
+Extract validation frame with `h2o.getFrame("valid.hex")`
+MSE: (Extract with `h2o.mse`) 0.1921716
+RMSE: (Extract with `h2o.rmse`) 0.4383739
+Logloss: (Extract with `h2o.logloss`) 3.501604
+Mean Per-Class Error: 0.8346187
+Confusion Matrix: Extract with `h2o.confusionMatrix(<model>,valid = TRUE)`)
+=========================================================================
+Confusion Matrix: Row labels: Actual class; Column labels: Predicted class
+       AU CA DE ES FR GB IT NDF NL PT  US other  Error          Rate
+AU      0  0  0  0  0  0  0   0  0  0   4     0 1.0000 =       4 / 4
+CA      0  0  0  0  0  0  0   0  0  0  10     0 1.0000 =     10 / 10
+DE      0  0  0  0  0  0  0   0  0  0   7     1 1.0000 =       8 / 8
+ES      0  0  0  0  0  0  0   0  0  0  24     0 1.0000 =     24 / 24
+FR      0  0  0  0  0  0  0   0  0  0  47     0 1.0000 =     47 / 47
+GB      0  0  0  0  0  0  0   0  0  0  13     1 1.0000 =     14 / 14
+IT      0  0  0  0  0  0  0   0  0  0  16     0 1.0000 =     16 / 16
+NDF     0  0  0  0  0  0  0 439  0  0   0     0 0.0000 =     0 / 439
+NL      0  0  0  0  0  0  0   0  0  0   9     0 1.0000 =       9 / 9
+PT      0  0  0  0  0  0  0   0  0  0   1     0 1.0000 =       1 / 1
+US      0  1  0  1  2  0  0   0  1  0 383     1 0.0154 =     6 / 389
+other   0  0  0  0  2  0  0   0  0  0  38     0 1.0000 =     40 / 40
+Totals  0  1  0  1  4  0  0 439  1  0 552     3 0.1788 = 179 / 1,001
+
+Hit Ratio Table: Extract with `h2o.hit_ratio_table(<model>,valid = TRUE)`
+=======================================================================
+Top-10 Hit Ratios: 
+    k hit_ratio
+1   1  0.821179
+2   2  0.847153
+3   3  0.874126
+4   4  0.891109
+5   5  0.900100
+6   6  0.907093
+7   7  0.911089
+8   8  0.912088
+9   9  0.913087
+10 10  0.913087
+
+
+
+
+Scoring History: 
+            timestamp   duration number_of_trees training_rmse training_logloss
+1 2018-03-16 07:55:37  0.000 sec               0                               
+2 2018-03-16 07:55:37  0.063 sec               1       0.52480          9.17527
+3 2018-03-16 07:55:37  0.108 sec               2       0.49167          7.90973
+4 2018-03-16 07:55:37  0.154 sec               3       0.49119          7.70334
+5 2018-03-16 07:55:37  0.201 sec               4       0.48826          7.51344
+  training_classification_error validation_rmse validation_logloss
+1                                                                 
+2                       0.20070         0.53347            9.51788
+3                       0.19274         0.48548            7.48130
+4                       0.19746         0.46024            6.27840
+5                       0.20054         0.45217            5.84682
+  validation_classification_error
+1                                
+2                         0.26174
+3                         0.23177
+4                         0.21379
+5                         0.20879
+
+---
+             timestamp   duration number_of_trees training_rmse training_logloss
+37 2018-03-16 07:55:40  3.248 sec              36       0.42526          3.86622
+38 2018-03-16 07:55:40  3.380 sec              37       0.42519          3.84100
+39 2018-03-16 07:55:40  3.506 sec              38       0.42528          3.81541
+40 2018-03-16 07:55:40  3.646 sec              39       0.42455          3.75587
+41 2018-03-16 07:55:41  3.787 sec              40       0.42526          3.74977
+42 2018-03-16 07:55:41  3.932 sec              41       0.42506          3.73654
+   training_classification_error validation_rmse validation_logloss
+37                       0.17589         0.43803            3.57843
+38                       0.17618         0.43805            3.52995
+39                       0.17589         0.43800            3.49885
+40                       0.17604         0.43771            3.49817
+41                       0.17532         0.43837            3.50007
+42                       0.17518         0.43837            3.50160
+   validation_classification_error
+37                         0.18082
+38                         0.17982
+39                         0.17982
+40                         0.17782
+41                         0.17782
+42                         0.17882
+
+Variable Importances: (Extract with `h2o.varimp`) 
+=================================================
+
+Variable Importances: 
+                  variable relative_importance scaled_importance percentage
+1       date_first_booking        86172.406250          1.000000   0.685189
+2     date_account_created        24219.306641          0.281056   0.192577
+3                       id         2919.796143          0.033883   0.023216
+4            first_browser         1956.153931          0.022700   0.015554
+5        first_device_type         1422.689331          0.016510   0.011312
+6                      age         1366.668457          0.015860   0.010867
+7              signup_flow         1331.563599          0.015452   0.010588
+8        affiliate_channel         1265.165405          0.014682   0.010060
+9  first_affiliate_tracked         1228.748657          0.014259   0.009770
+10           signup_method         1001.716370          0.011625   0.007965
+11      affiliate_provider          979.541138          0.011367   0.007789
+12                  gender          918.635559          0.010660   0.007304
+13  timestamp_first_active          767.422302          0.008906   0.006102
+14                language          214.558868          0.002490   0.001706
+
+
+H2OMultinomialMetrics: drf
+** Reported on validation data. **
+
+Validation Set Metrics: 
+=====================
+
+Extract validation frame with `h2o.getFrame("valid.hex")`
+MSE: (Extract with `h2o.mse`) 0.1921716
+RMSE: (Extract with `h2o.rmse`) 0.4383739
+Logloss: (Extract with `h2o.logloss`) 3.501604
+Mean Per-Class Error: 0.8346187
+Confusion Matrix: Extract with `h2o.confusionMatrix(<model>,valid = TRUE)`)
+=========================================================================
+Confusion Matrix: Row labels: Actual class; Column labels: Predicted class
+       AU CA DE ES FR GB IT NDF NL PT  US other  Error          Rate
+AU      0  0  0  0  0  0  0   0  0  0   4     0 1.0000 =       4 / 4
+CA      0  0  0  0  0  0  0   0  0  0  10     0 1.0000 =     10 / 10
+DE      0  0  0  0  0  0  0   0  0  0   7     1 1.0000 =       8 / 8
+ES      0  0  0  0  0  0  0   0  0  0  24     0 1.0000 =     24 / 24
+FR      0  0  0  0  0  0  0   0  0  0  47     0 1.0000 =     47 / 47
+GB      0  0  0  0  0  0  0   0  0  0  13     1 1.0000 =     14 / 14
+IT      0  0  0  0  0  0  0   0  0  0  16     0 1.0000 =     16 / 16
+NDF     0  0  0  0  0  0  0 439  0  0   0     0 0.0000 =     0 / 439
+NL      0  0  0  0  0  0  0   0  0  0   9     0 1.0000 =       9 / 9
+PT      0  0  0  0  0  0  0   0  0  0   1     0 1.0000 =       1 / 1
+US      0  1  0  1  2  0  0   0  1  0 383     1 0.0154 =     6 / 389
+other   0  0  0  0  2  0  0   0  0  0  38     0 1.0000 =     40 / 40
+Totals  0  1  0  1  4  0  0 439  1  0 552     3 0.1788 = 179 / 1,001
+
+Hit Ratio Table: Extract with `h2o.hit_ratio_table(<model>,valid = TRUE)`
+=======================================================================
+Top-10 Hit Ratios: 
+    k hit_ratio
+1   1  0.821179
+2   2  0.847153
+3   3  0.874126
+4   4  0.891109
+5   5  0.900100
+6   6  0.907093
+7   7  0.911089
+8   8  0.912088
+9   9  0.913087
+10 10  0.913087
+
+> ##  metrics. Performance metrics depend on 
+> ##  the type of model being built. With a
+> ##  multinomial classification, we will primarily
+> ##  look at the confusion matrix, and overall
+> ##  accuracy via hit_ratio @ k=1.
+> h2o.hit_ratio_table(rf1,valid = T)[1,2]
+[1] 0.8211788
+> 
+> #plot variable importance
+> h2o.varimp_plot(rf1)
+> 
+> #test on test
+> (perf = h2o.performance(rf1,test))
+H2OMultinomialMetrics: drf
+
+Test Set Metrics: 
+=====================
+
+MSE: (Extract with `h2o.mse`) 0.1869022
+RMSE: (Extract with `h2o.rmse`) 0.4323219
+Logloss: (Extract with `h2o.logloss`) 3.518008
+Mean Per-Class Error: 0.8311404
+Confusion Matrix: Extract with `h2o.confusionMatrix(<model>, <data>)`)
+=========================================================================
+Confusion Matrix: Row labels: Actual class; Column labels: Predicted class
+       AU CA DE ES FR GB IT NDF NL PT   US other  Error          Rate
+AU      0  0  0  0  0  0  0   0  0  0    7     0 1.0000 =       7 / 7
+CA      0  0  0  0  0  0  0   0  0  0   28     0 1.0000 =     28 / 28
+DE      0  0  0  0  0  0  0   0  0  0   16     0 1.0000 =     16 / 16
+ES      0  0  0  0  0  0  0   0  0  0   53     0 1.0000 =     53 / 53
+FR      0  0  0  0  2  0  0   0  0  0   81     0 0.9759 =     81 / 83
+GB      0  0  0  0  0  0  0   0  0  0   26     0 1.0000 =     26 / 26
+IT      0  0  0  0  0  0  0   0  0  0   38     1 1.0000 =     39 / 39
+NDF     0  0  0  0  0  0  0 850  0  0    0     0 0.0000 =     0 / 850
+NL      0  0  0  0  0  0  0   0  0  0    9     0 1.0000 =       9 / 9
+PT      0  0  0  0  0  0  0   0  0  0    7     0 1.0000 =       7 / 7
+US      0  0  0  1  3  0  1   0  0  0  777     5 0.0127 =    10 / 787
+other   0  0  0  1  0  0  0   0  0  0   65     1 0.9851 =     66 / 67
+Totals  0  0  0  2  5  0  1 850  0  0 1107     7 0.1734 = 342 / 1,972
+
+Hit Ratio Table: Extract with `h2o.hit_ratio_table(<model>, <data>)`
+=======================================================================
+Top-10 Hit Ratios: 
+    k hit_ratio
+1   1  0.826572
+2   2  0.850913
+3   3  0.876268
+4   4  0.890467
+5   5  0.900101
+6   6  0.903651
+7   7  0.909229
+8   8  0.912779
+9   9  0.913793
+10 10  0.913793
+
+> 
+> #---------------------------
+> #deep learning
+> #---------------------------
+> splits2 = h2o.splitFrame(
++   train_users.hex,           ##  splitting the H2O frame we read above
++   c(0.6,0.2),   ##  create splits of 60% and 20%; 
++   ##  H2O will create one more split of 1-(sum of these parameters)
++   ##  so we will get 0.7 / 0.2 / 1 - (0.7+0.2) = 0.7/0.2/0.1
++   seed=1234)    
+> 
+> train2 = h2o.assign(splits2[[1]], "train.hex")   
+> ## assign the first result the R variable train
+> ## and the H2O name train.hex
+> valid2 = h2o.assign(splits2[[2]], "valid.hex")   ## R valid, H2O valid.hex
+> (dim(train2))
+[1] 6006   16
+> (dim(valid2))
+[1] 2031   16
+> 
+> 
+> system.time(dl1 <- h2o.deeplearning(
++   x = 1:15,
++   y = 16,
++   training_frame= train2,
++   validation_frame = valid2,
++   activation = "RectifierWithDropout",
++   hidden = c(50),
++   epochs = 20,
++   loss = "CrossEntropy",
++   adaptive_rate = FALSE,
++   rate = .001,
++   input_dropout_ratio = 0,
++   hidden_dropout_ratios = c(.2)
++ ))
+  |=========================================================================| 100%
+   user  system elapsed 
+   0.45    0.00   21.97 
+Warning message:
+In .h2o.startModelJob(algo, params, h2oRestApiVersion) :
+  Dropping bad and constant columns: [signup_app].
+
+> 
+> 
+> ###############################################################################
+> summary(dl1)
+Model Details:
+==============
+
+H2OMultinomialModel: deeplearning
+Model Key:  DeepLearning_model_R_1521183148708_2 
+Status of Neuron Layers: predicting country_destination, 12-class classification, multinomial distribution, CrossEntropy loss, 581,212 weights/biases, 2.4 MB, 123,473 training samples, mini-batch size 1
+  layer units             type dropout       l1       l2 mean_rate rate_rms
+1     1 11611            Input  0.00 %                                     
+2     2    50 RectifierDropout 20.00 % 0.000000 0.000000  0.000890 0.000000
+3     3    12          Softmax         0.000000 0.000000  0.000890 0.000000
+  momentum mean_weight weight_rms mean_bias bias_rms
+1                                                   
+2 0.000000   -0.000069   0.014686  0.413187 0.037647
+3 0.000000   -0.022223   0.765063  0.000075 0.280200
+
+H2OMultinomialMetrics: deeplearning
+** Reported on training data. **
+** Metrics reported on full training frame **
+
+Training Set Metrics: 
+=====================
+
+Extract training frame with `h2o.getFrame("train.hex")`
+MSE: (Extract with `h2o.mse`) 0.1465343
+RMSE: (Extract with `h2o.rmse`) 0.382798
+Logloss: (Extract with `h2o.logloss`) 0.4667998
+Mean Per-Class Error: 0.8192626
+Confusion Matrix: Extract with `h2o.confusionMatrix(<model>,train = TRUE)`)
+=========================================================================
+Confusion Matrix: Row labels: Actual class; Column labels: Predicted class
+       AU CA DE ES FR GB IT  NDF NL PT   US other  Error          Rate
+AU      0  0  0  0  0  0  0    0  0  0   13     0 1.0000 =     13 / 13
+CA      0  0  0  0  0  0  0    0  0  0   83     0 1.0000 =     83 / 83
+DE      0  0  0  0  0  0  0    0  0  0   54     0 1.0000 =     54 / 54
+ES      0  0  0  1  0  0  0    0  0  0  101     0 0.9902 =   101 / 102
+FR      0  0  0  0 18  0  0    0  0  0  252     1 0.9336 =   253 / 271
+GB      0  0  0  0  0  0  0    0  0  0   81     0 1.0000 =     81 / 81
+IT      0  0  0  0  0  0  4    0  0  0   94     0 0.9592 =     94 / 98
+NDF     0  0  0  0  0  0  0 2522  0  0    0     0 0.0000 =   0 / 2,522
+NL      0  0  0  0  0  0  0    0  0  0   33     0 1.0000 =     33 / 33
+PT      0  0  0  0  0  0  0    0  0  0    7     0 1.0000 =       7 / 7
+US      0  0  0  0  0  0  0    0  0  0 2492     1 0.0004 =   1 / 2,493
+other   0  0  0  0  2  0  0    0  0  0  234    13 0.9478 =   236 / 249
+Totals  0  0  0  1 20  0  4 2522  0  0 3444    15 0.1592 = 956 / 6,006
+
+Hit Ratio Table: Extract with `h2o.hit_ratio_table(<model>,train = TRUE)`
+=======================================================================
+Top-10 Hit Ratios: 
+    k hit_ratio
+1   1  0.840826
+2   2  0.938728
+3   3  0.965035
+4   4  0.981019
+5   5  0.989344
+6   6  0.993839
+7   7  0.997669
+8   8  0.999334
+9   9  1.000000
+10 10  1.000000
+
+
+H2OMultinomialMetrics: deeplearning
+** Reported on validation data. **
+** Metrics reported on full validation frame **
+
+Validation Set Metrics: 
+=====================
+
+Extract validation frame with `h2o.getFrame("valid.hex")`
+MSE: (Extract with `h2o.mse`) 0.1924102
+RMSE: (Extract with `h2o.rmse`) 0.4386459
+Logloss: (Extract with `h2o.logloss`) 0.7333529
+Mean Per-Class Error: 0.8334345
+Confusion Matrix: Extract with `h2o.confusionMatrix(<model>,valid = TRUE)`)
+=========================================================================
+Confusion Matrix: Row labels: Actual class; Column labels: Predicted class
+       AU CA DE ES FR GB IT NDF NL PT   US other  Error          Rate
+AU      0  0  0  0  0  0  0   0  0  0    9     0 1.0000 =       9 / 9
+CA      0  0  0  0  0  0  0   0  0  0   24     0 1.0000 =     24 / 24
+DE      0  0  0  0  0  0  0   0  0  0   12     1 1.0000 =     13 / 13
+ES      0  0  0  0  0  0  0   0  0  0   50     0 1.0000 =     50 / 50
+FR      0  0  0  0  0  0  0   0  0  0   83     0 1.0000 =     83 / 83
+GB      0  0  0  0  0  0  0   0  0  0   29     0 1.0000 =     29 / 29
+IT      0  0  0  0  0  0  0   0  0  0   46     0 1.0000 =     46 / 46
+NDF     0  0  0  0  0  0  0 855  0  0    0     0 0.0000 =     0 / 855
+NL      0  0  0  0  0  0  0   0  0  0   13     0 1.0000 =     13 / 13
+PT      0  0  0  0  0  0  0   0  0  0    4     0 1.0000 =       4 / 4
+US      0  0  0  0  0  0  0   0  0  0  823     1 0.0012 =     1 / 824
+other   0  0  0  0  0  0  0   0  0  0   81     0 1.0000 =     81 / 81
+Totals  0  0  0  0  0  0  0 855  0  0 1174     2 0.1738 = 353 / 2,031
+
+Hit Ratio Table: Extract with `h2o.hit_ratio_table(<model>,valid = TRUE)`
+=======================================================================
+Top-10 Hit Ratios: 
+    k hit_ratio
+1   1  0.826194
+2   2  0.866076
+3   3  0.898080
+4   4  0.922698
+5   5  0.946824
+6   6  0.962088
+7   7  0.969966
+8   8  0.981290
+9   9  0.990153
+10 10  0.994092
+
+
+
+
+Scoring History: 
+            timestamp   duration training_speed   epochs iterations       samples
+1 2018-03-16 07:55:43  0.000 sec                 0.00000          0      0.000000
+2 2018-03-16 07:55:44  2.500 sec   6604 obs/sec  1.28655          1   7727.000000
+3 2018-03-16 07:55:58 16.174 sec   7414 obs/sec 16.70213         13 100313.000000
+4 2018-03-16 07:56:02 20.678 sec   7410 obs/sec 20.55828         16 123473.000000
+  training_rmse training_logloss training_classification_error validation_rmse
+1                                                                             
+2       0.43131          0.66817                       0.16500         0.44539
+3       0.38641          0.50352                       0.16384         0.42703
+4       0.38280          0.46680                       0.15917         0.43865
+  validation_logloss validation_classification_error
+1                                                   
+2            0.74412                         0.17381
+3            0.73877                         0.17331
+4            0.73335                         0.17381
+
+Variable Importances: (Extract with `h2o.varimp`) 
+=================================================
+
+Variable Importances: 
+                       variable relative_importance scaled_importance percentage
+1           date_first_booking.            1.000000          1.000000   0.002386
+2                   language.en            0.215394          0.215394   0.000514
+3           signup_method.basic            0.181338          0.181338   0.000433
+4 date_first_booking.2011-04-14            0.126652          0.126652   0.000302
+5                 gender.FEMALE            0.118228          0.118228   0.000282
+
+---
+                                 variable relative_importance scaled_importance
+11606       first_device_type.missing(NA)            0.000000          0.000000
+11607       affiliate_channel.missing(NA)            0.000000          0.000000
+11608      affiliate_provider.missing(NA)            0.000000          0.000000
+11609 first_affiliate_tracked.missing(NA)            0.000000          0.000000
+11610                  gender.missing(NA)            0.000000          0.000000
+11611           signup_method.missing(NA)            0.000000          0.000000
+      percentage
+11606   0.000000
+11607   0.000000
+11608   0.000000
+11609   0.000000
+11610   0.000000
+11611   0.000000
+> dl1@model$validation_metrics     ## A more direct way to access the validation 
+H2OMultinomialMetrics: deeplearning
+** Reported on validation data. **
+** Metrics reported on full validation frame **
+
+Validation Set Metrics: 
+=====================
+
+Extract validation frame with `h2o.getFrame("valid.hex")`
+MSE: (Extract with `h2o.mse`) 0.1924102
+RMSE: (Extract with `h2o.rmse`) 0.4386459
+Logloss: (Extract with `h2o.logloss`) 0.7333529
+Mean Per-Class Error: 0.8334345
+Confusion Matrix: Extract with `h2o.confusionMatrix(<model>,valid = TRUE)`)
+=========================================================================
+Confusion Matrix: Row labels: Actual class; Column labels: Predicted class
+       AU CA DE ES FR GB IT NDF NL PT   US other  Error          Rate
+AU      0  0  0  0  0  0  0   0  0  0    9     0 1.0000 =       9 / 9
+CA      0  0  0  0  0  0  0   0  0  0   24     0 1.0000 =     24 / 24
+DE      0  0  0  0  0  0  0   0  0  0   12     1 1.0000 =     13 / 13
+ES      0  0  0  0  0  0  0   0  0  0   50     0 1.0000 =     50 / 50
+FR      0  0  0  0  0  0  0   0  0  0   83     0 1.0000 =     83 / 83
+GB      0  0  0  0  0  0  0   0  0  0   29     0 1.0000 =     29 / 29
+IT      0  0  0  0  0  0  0   0  0  0   46     0 1.0000 =     46 / 46
+NDF     0  0  0  0  0  0  0 855  0  0    0     0 0.0000 =     0 / 855
+NL      0  0  0  0  0  0  0   0  0  0   13     0 1.0000 =     13 / 13
+PT      0  0  0  0  0  0  0   0  0  0    4     0 1.0000 =       4 / 4
+US      0  0  0  0  0  0  0   0  0  0  823     1 0.0012 =     1 / 824
+other   0  0  0  0  0  0  0   0  0  0   81     0 1.0000 =     81 / 81
+Totals  0  0  0  0  0  0  0 855  0  0 1174     2 0.1738 = 353 / 2,031
+
+Hit Ratio Table: Extract with `h2o.hit_ratio_table(<model>,valid = TRUE)`
+=======================================================================
+Top-10 Hit Ratios: 
+    k hit_ratio
+1   1  0.826194
+2   2  0.866076
+3   3  0.898080
+4   4  0.922698
+5   5  0.946824
+6   6  0.962088
+7   7  0.969966
+8   8  0.981290
+9   9  0.990153
+10 10  0.994092
+
+> h2o.hit_ratio_table(dl1,valid = T)[1,2]
+[1] 0.826194
